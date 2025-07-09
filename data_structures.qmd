@@ -1,0 +1,386 @@
+---
+title: "Data Structures"
+format: html
+editor: visual
+---
+
+## Data Structures
+
+Data Structure is a collection of data types in an organized way.
+
+| Type | Description |
+|----|----|
+| Vector | A one-dimensional structure having same data type |
+| List | Similar to vector but can contain items of different types |
+| Data frame | A two-dimensional structure, but each columns can have different data types. |
+
+## Vector
+
+### About
+
+-   A one-directional structure having same data type.
+
+-   It is created using **c()** function. 
+
+-   Comma (,) is used to separate vector elements
+
+    **Key Properties:**
+
+    -   Homogeneous (all elements must be of the same type).
+    -   Index count starting from `1`
+
+### Types
+
+R supports several vector types:
+
+| **Type**      | **Description**                      |
+|:--------------|:-------------------------------------|
+| **Numeric**   | Contains numbers (decimals/integers) |
+| **Integer**   | Whole numbers (explicit with `L`)    |
+| **Character** | Text/strings                         |
+| **Logical**   | Boolean values (`TRUE/FALSE`)        |
+
+## Creating Vectors
+
+### Combine
+
+`c()` (Combine function)
+
+```{r}
+numbers <- c(10, 20, 30)
+numbers
+```
+
+### Sequence
+
+`:` (Sequence for integers)
+
+```{r}
+sequence <- 1:5  # 1 2 3 4 5
+sequence
+```
+
+`seq()` (Custom sequences)
+
+```{r}
+even_numbers <- seq(from = 2, to = 10, by = 2)  # 2 4 6 8 10
+even_numbers
+```
+
+### Repeat
+
+`rep()` (Repeating values)
+
+```{r}
+repeated <- rep("Hi", times = 3)  # "Hi" "Hi" "Hi"
+repeated
+```
+
+## Your Turn 01
+
+### Question
+
+1.  Create a **numeric vector** named `weights` with values `60, 72, 57, 90`.
+
+2.  Create a **character vector** named `animals` with values `"cat"`, `"dog"`, `"bird"`.
+
+3.  Use `:` to generate a sequence from `5` to `15` and store it in `seq1`.
+
+### Answer
+
+```{r}
+
+
+
+
+```
+
+## Vector Operations
+
+### **Arithmetic**
+
+Vectors support element-wise operations:
+
+```{r}
+a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+
+a + b  
+a * 2   
+```
+
+### **Logical**
+
+```{r}
+a > 2   
+a == b  
+```
+
+### **Recycling**
+
+If vectors are of unequal length, R **recycles** the shorter one:
+
+```{r}
+c(1, 2, 3) + c(10, 20)  
+```
+
+### Length
+
+-   Use `length()` to get the number of elements.
+
+```{r}
+
+fruits <- c("apple", "banana", "orange")
+length(fruits)  # Returns 3
+```
+
+### Operation
+
+```{r}
+fruits[1] # Accessing a vector
+```
+
+```{r}
+fruits[1] <- "mango" # Modifying a vector
+fruits[1]
+```
+
+```{r}
+fruits <- NULL # Deleting a vector
+fruits
+```
+
+## Your Turn 02
+
+### Question
+
+1.  Add `10` to every element in `weights`.
+
+2.  Multiply `seq1` by `2`.
+
+3.  Concatenate `animals` (Your Turn 01) with a new value `"fish"`.
+
+### Answer
+
+```{r}
+
+
+
+
+
+
+
+```
+
+## Common Vector Functions
+
+### Functions
+
+| **Function** | **Purpose**             |
+|:-------------|:------------------------|
+| `sum()`      | Sum all elements        |
+| `mean()`     | Calculate average       |
+| `sort()`     | Sort in ascending order |
+| `rev()`      | Reverse the vector      |
+| `unique()`   | Remove duplicates       |
+| `paste()`    | Concatenate strings     |
+
+### Example
+
+```{r}
+sum(c(1, 2, 3))
+mean(c(1, 2, 3))
+sort(c(3, 1, 2), decreasing=FALSE)
+rev(c(1, 2, 3))
+unique(c(1, 2, 2, 3))
+paste("ID", 1:3, sep="-")
+```
+
+## Your Turn 03
+
+### Question
+
+Given:
+
+``` r
+prices <- c(12.5, 9.8, 15.3, 10.0, 7.5)
+```
+
+1.  Calculate the **mean price**.
+2.  Sort the prices in **descending order**.
+3.  Find the **number of unique values** in `c(1, 2, 2, 3, 1)`
+
+### Answer
+
+```{r}
+
+
+
+
+
+
+```
+
+## List
+
+### About
+
+-   Lists are **ordered collections** that can contain elements of **different types**
+
+-   They can hold vectors, even other lists etc
+
+-   Created using `list()` function
+
+**Key Features:**
+
+-   Heterogeneous (mixed data types)
+
+-   Can be nested (lists within lists)
+
+-   Elements can be named
+
+### Simple list
+
+```{r}
+my_list <- list(1, "a", TRUE)
+```
+
+```{r}
+
+# Named list
+person <- list(
+  name = "Alice",
+  age = 30,
+  scores = c(85, 90, 78)
+)
+
+```
+
+## Your Turn 04
+
+### Question
+
+1.  Create a named list `car` with:
+
+    -   `model = "Toyota"`
+
+    -   `year = 2020`
+
+    -   `features = c("AC", "GPS", "Bluetooth")`
+
+### Answer
+
+```{r}
+
+
+
+
+
+
+```
+
+## List Operation
+
+### Access
+
+```{r}
+my_list[[1]]  # By index, here first element
+```
+
+```{r}
+person[["age"]] # By name (if named)
+person$scores
+```
+
+```{r}
+person[c("name", "age")] # Multiple elements
+```
+
+### Modify
+
+Modifying Lists
+
+```{r}
+person$department <- "Marketing" # Add element
+```
+
+```{r}
+person$age <- 31 # Modify element
+```
+
+```{r}
+person$scores <- NULL # Remove element
+```
+
+### Convert
+
+Converting Objects to Lists
+
+```{r}
+# Vector to list
+num_vec <- 1:5
+as.list(num_vec)
+```
+
+### Check
+
+Checking Object Existence
+
+```{r}
+# Check if object exists
+exists("person")  # Returns TRUE/FALSE
+```
+
+```{r}
+# Check if list element exists
+!is.null(person$name)  # TRUE
+is.null(person$salary)  # TRUE
+```
+
+## Your Turn 05
+
+### Question
+
+```{r}
+inventory <- list(
+  item1 = list(name = "Laptop", stock = 15),
+  item2 = list(name = "Phone", stock = 23)
+)
+```
+
+1.  Add a new item (`"Tablet"`, stock=8)
+2.  Increase all stock values by 5
+
+### Answer
+
+```{r}
+
+
+
+
+
+
+
+```
+
+## Common List Functions
+
+### Functions
+
+| **Function** | **Purpose**        |
+|:-------------|:-------------------|
+| `length()`   | Number of elements |
+| `names()`    | Get/set names      |
+| `unlist()`   | Flatten to vector  |
+| `str()`      | List structure     |
+
+### Examples
+
+```{r}
+
+length(person)
+names(person)
+unlist(person)
+str(person)
+
+```

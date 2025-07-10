@@ -9,7 +9,7 @@ editor: visual
 Data Structure is a collection of data types in an organized way.
 
 | Type | Description |
-|----|----|
+|------------------------------------|------------------------------------|
 | Vector | A one-dimensional structure having same data type |
 | List | Similar to vector but can contain items of different types |
 | Data frame | A two-dimensional structure, but each columns can have different data types. |
@@ -354,6 +354,17 @@ inventory <- list(
 ### Answer
 
 ```{r}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
